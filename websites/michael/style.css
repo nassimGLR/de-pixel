@@ -1,52 +1,70 @@
-body {
-    margin: 0;
-    overflow: hidden; /* Prevent scrollbars */
-}
 
-.container {
-    position: relative;
-    width: 100vw; /* Full width of the viewport */
-    height: 100vh; /* Full height of the viewport */
-    overflow: hidden; /* Hide overflow */
-}
-
-img {
-    width: 100%; /* Ensure the image fills the container's width */
-    height: 100%; /* Stretch image to height */
-    object-fit: fill; /* Maintain the image at the full container size */
-    aspect-ratio: 16/9; /* Force the image to stay in 16:9 aspect ratio */
-}
-
-.image-button {
-    position: absolute;
-    top: 812px;
-    left: 820px;
-    width: 397px;
-    height: 91px;
-    text-decoration: none;
-}
-
-.image-button:hover {
-    background-color: rgba(255, 255, 255, 0.25); /* Hover effect */
-}
-
-.terug-button {
-    position: absolute;
-    bottom: 20px;
-    left: 20px; 
-    text-decoration: none;
-    color: white; /* Text color */
-    background-color: rgba(0, 0, 0, 0.6); /* Dark, semi-transparent background */
-    padding: 12px 20px; /* Padding for a better fit */
-    border-radius: 8px; /* Rounded corners */
-    border: 2px solid rgba(255, 255, 255, 0.3); /* Subtle border */
-    font-size: 18px; /* Adjust font size */
-    font-family: 'Arial', sans-serif; /* Clean, readable font */
-    text-transform: uppercase; /* Make the text uppercase to fit the theme */
-    transition: background-color 0.3s ease; /* Smooth transition for hover */
-}
-
-.terug-button:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Lighter hover effect */
-    border-color: rgba(255, 255, 255, 0.6); /* Make the border more prominent on hover */
-}
+    body {
+        margin: 0;
+        overflow: hidden; /* Prevent scrollbars */
+    }
+    
+    .container {
+        position: relative;
+        width: 100vw; /* Full width of the viewport */
+        height: 100vh; /* Full height of the viewport */
+        overflow: hidden; /* Hide overflow */
+    }
+    
+    img {
+        width: 100%; /* Ensure the image fills the container's width */
+        height: 100%; /* Stretch image to height */
+        object-fit: fill; /* Maintain the image at the full container size */
+        aspect-ratio: 16/9; /* Force the image to stay in 16:9 aspect ratio */
+    }
+    
+    /* Position the image button over the 'Press Start' text */
+    .image-button {
+        position: absolute;
+        top: calc(78% - 30px); /* Move the button 88 pixels down */
+        left: 50%; /* Center the button horizontally */
+        transform: translateX(-50%); /* Keep it centered horizontally */
+        width: 400px; /* Symmetrical width */
+        height: 75px; /* Symmetrical height for a rectangular shape */
+        text-decoration: none;
+        background-color: rgba(10, 15, 30, 0.1); /* Adjusted for higher transparency */
+        padding: 20px; /* Padding for better click area */
+        border-radius: 8px; /* Rounded corners */
+        border: 2px solid rgba(100, 150, 255, 0.5); /* Subtle blue border */
+        color: #A1F1FF; /* Light blue text */
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Center the text inside the button */
+        transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
+        z-index: 10; /* Ensure the button is above other elements */
+    }
+    
+    .image-button:hover {
+        background-color: rgba(20, 30, 60, 0.7); /* Slightly lighter metallic effect on hover */
+        box-shadow: 0px 0px 15px rgba(150, 220, 255, 0.8); /* Stronger blue glow on hover */
+        border-color: rgba(150, 220, 255, 0.8); /* More prominent blue border on hover */
+    }
+    
+    .terug-button {
+        position: absolute;
+        bottom: 20px;
+        left: 20px; /* Bottom-left corner */
+        text-decoration: none;
+        color: #A1F1FF; /* Light blue text to match the image highlights */
+        background-color: rgba(10, 15, 30, 0.8); /* Dark metallic blue background */
+        padding: 12px 20px;
+        border-radius: 8px; /* Rounded corners */
+        border: 2px solid rgba(100, 150, 255, 0.5); /* Subtle blue border */
+        font-size: 18px; /* Font size */
+        font-family: 'Arial', sans-serif; /* Clean font */
+        text-transform: uppercase; /* Make the text uppercase */
+        box-shadow: 0px 0px 10px rgba(100, 200, 255, 0.5); /* Soft blue glow around the button */
+        transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    }
+    
+    .terug-button:hover {
+        background-color: rgba(20, 30, 60, 0.9); /* Slightly lighter metallic effect on hover */
+        box-shadow: 0px 0px 15px rgba(150, 220, 255, 0.8); /* Stronger blue glow on hover */
+        border-color: rgba(150, 220, 255, 0.8); /* More prominent blue border on hover */
+    }
+    
