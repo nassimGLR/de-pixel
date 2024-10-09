@@ -11,7 +11,7 @@ body {
 .main-box {
     width: 1920px; /* Set to 1920px width */
     height: 1080px; /* Set to 1080px height */
-    background-color: #395152; /* Green background for reference */
+    background-color: #000000; /* Green background for reference */
     position: relative;
 }
 
@@ -20,13 +20,21 @@ body {
     position: absolute;
     top: 20px;
     left: 50px;
-    width: 1820px; /* Full width across the top */
-    height: 150px; /* Adjusted height */
-    background-color: #E0FFFF;
+    width: 1820px;
+    height: 150px;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
     box-sizing: border-box;
-    font-size: 2em;
-    font-weight: bold;
+}
+
+/* Ensure that the image keeps its aspect ratio */
+.header img {
+    width: 706px;
+    height: 116px;
+    object-fit: contain;
 }
 
 /* Main area with video and right side */
