@@ -21,7 +21,54 @@ body {
 .projects-title {
     margin: 20px 0; 
 }
+.start-button {
+    display: block;
+    margin: 20px auto;
+    padding: 15px 30px; 
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-size: 18px; 
+}
+.star {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url('images/star.png'); /* replace with your pixel star image */
+    background-size: 16px 16px;
+    margin-right: 5px;
+}
 
+.wanted-system ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.wanted-system li {
+    margin-bottom: 10px;
+}
+
+.wanted-system small {
+    font-size: 14px;
+    color: #666;
+}
+
+.logo {
+    display: block;
+    width: 250px; /* Adjust the width to your liking */
+    height: auto;
+    margin: 10px auto;
+}
+
+.start-button:hover {
+    background-color: #ffffff;
+    color: #000;
+}
 .intro, .about-section, .projects-title {
     padding: 20px;
     font-size: 14px;
@@ -46,7 +93,7 @@ body::before {
 }
 
 header {
-    background-color: #000;
+    background-color: #00000000;
     padding: 20px;
     border-bottom: 4px solid #fff;
 }
