@@ -53,10 +53,20 @@ body {
     width: 1020px; /* Adjusted to a larger width for 1920x1080 */
     height: 830px; /* Adjusted height */
     background-color: #000000;
-    display: flex;
+    display: inline-block;
     justify-content: center;
     align-items: center;
     position: relative;
+}
+.text-overlay {
+    position: absolute; /* Position the text absolutely */
+    top: 70%;      /* Move text higher from the bottom (adjust as needed) */
+    left: -10px;        /* Move text to the left (adjust as needed) */
+    color: #fff;       /* Change text color */
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: semi-transparent background */
+    padding: 10px;     /* Optional: padding around the text */
+    font-size: 18px;   /* Font size */
+    text-align: left;  /* Align text to the left */
 }
 
 .play-button {
@@ -68,7 +78,12 @@ body {
     transform: translate(-50%, -50%);
     pointer-events:none;
 }
-
+.video-box p {
+    text-align: left;
+    font-size: px;    /* Change the font size */
+    color: #ffffff;        /* Change the text color */
+    margin-top: 10px;   /* Add space between the video and text */
+}
 /* Right content box */
 .right-content {
     width: 780px; /* Adjusted width */
