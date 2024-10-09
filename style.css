@@ -118,10 +118,7 @@ main {
     max-width: 1200px;
     margin: 0 auto;
 }
-main a {
-    max-width: 82px;
-    text-align: center;
-}
+
 .portfolio-list {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
