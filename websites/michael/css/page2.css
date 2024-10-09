@@ -62,11 +62,12 @@ body {
     position: absolute; /* Position the text absolutely */
     top: 70%;      /* Move text higher from the bottom (adjust as needed) */
     left: -10px;        /* Move text to the left (adjust as needed) */
-    color: #fff;       /* Change text color */
+    color: #A1F1FF;
     background-color: rgba(0, 0, 0, 0.5); /* Optional: semi-transparent background */
     padding: 10px;     /* Optional: padding around the text */
     font-size: 18px;   /* Font size */
     text-align: left;  /* Align text to the left */
+    font-family: '', sans-serif;
 }
 
 .play-button {
@@ -78,12 +79,7 @@ body {
     transform: translate(-50%, -50%);
     pointer-events:none;
 }
-.video-box p {
-    text-align: left;
-    font-size: px;    /* Change the font size */
-    color: #ffffff;        /* Change the text color */
-    margin-top: 10px;   /* Add space between the video and text */
-}
+
 /* Right content box */
 .right-content {
     width: 780px; /* Adjusted width */
@@ -116,4 +112,30 @@ body {
     width: 380px; /* Adjusted width */
     height: 400px; /* Adjusted height */
     background-color: #E6FEFB;
+}
+.terug-button {
+    position: absolute;
+    bottom: 20px;
+    left: 20px; /* Bottom-left corner */
+    text-decoration: none;
+    color: #A1F1FF; /* Light blue text to match the image highlights */
+    background-color: rgba(10, 15, 30, 0.8); /* Dark metallic blue background */
+    padding: 12px 20px;
+    border-radius: 8px; /* Rounded corners */
+    border: 2px solid rgba(100, 150, 255, 0.5); /* Subtle blue border */
+    font-size: 18px; /* Font size */
+    font-family: 'Arial', sans-serif; /* Clean font */
+    text-transform: uppercase; /* Make the text uppercase */
+    box-shadow: 0px 0px 10px rgba(100, 200, 255, 0.5); /* Soft blue glow around the button */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    z-index: 10;
+}
+
+.terug-button:hover {
+    background-color: rgba(20, 30, 60, 0.9); /* Slightly lighter metallic effect on hover */
+    box-shadow: 0px 0px 15px rgba(150, 220, 255, 0.8); /* Stronger blue glow on hover */
+    border-color: rgba(150, 220, 255, 0.8); /* More prominent blue border on hover */
+}
+.text-overlay {
+    color: #A1F1FF;
 }
