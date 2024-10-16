@@ -50,10 +50,10 @@ backgroundVideo.addEventListener('ended', function() {
     backgroundVideo.play();
 });
 
-// Allow the overlay video to be played only after 5 seconds
+// Allow the overlay video to be played only after 300 milliseconds
 setTimeout(() => {
     canPlayOverlay = true; // Enable overlay video play
-}, 5000);
+}, 300); // Change to 300ms
 
 // Event listener for clicks
 document.addEventListener('click', function() {
@@ -67,6 +67,7 @@ document.addEventListener('click', function() {
 // Event listener for keydown
 document.addEventListener('keydown', function() {
     if (canNavigate) {
+        // Immediately navigate to the next page
         window.location.href = '/websites/michael/pages/mainpage.html'; // Navigate to the next page
     } else {
         playOverlayVideo(); // Play overlay video if allowed
