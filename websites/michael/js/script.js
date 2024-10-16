@@ -53,23 +53,27 @@ backgroundVideo.addEventListener('ended', function() {
 // Allow the overlay video to be played only after 300 milliseconds
 setTimeout(() => {
     canPlayOverlay = true; // Enable overlay video play
-}, 300); // Change to 300ms
+}, 5000); // Change to 300ms
 
-// Event listener for clicks
 document.addEventListener('click', function() {
-    if (canNavigate) {
-        window.location.href = '/websites/michael/pages/mainpage.html'; // Navigate to the next page
-    } else {
-        playOverlayVideo(); // Play overlay video if allowed
-    }
+    setTimeout(() => {
+        if (canNavigate) {
+            // Immediately navigate to the next page after 500ms
+            window.location.href = '/websites/michael/pages/mainpage.html'; // Navigate to the next page
+        } else {
+            playOverlayVideo(); // Play overlay video if allowed, after 500ms
+        }
+    }, 500); // 500ms delay
 });
 
-// Event listener for keydown
+
 document.addEventListener('keydown', function() {
-    if (canNavigate) {
-        // Immediately navigate to the next page
-        window.location.href = '/websites/michael/pages/mainpage.html'; // Navigate to the next page
-    } else {
-        playOverlayVideo(); // Play overlay video if allowed
-    }
+    setTimeout(() => {
+        if (canNavigate) {
+            // Immediately navigate to the next page after 500ms
+            window.location.href = '/websites/michael/pages/mainpage.html'; // Navigate to the next page
+        } else {
+            playOverlayVideo(); // Play overlay video if allowed, after 500ms
+        }
+    }, 500); // 500ms delay
 });
