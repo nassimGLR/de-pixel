@@ -1,48 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grand Theft Auto: San Andreas Information</title>
+    <title>Grand Theft Auto: San Andreas Informatie</title>
     <link rel="stylesheet" href="../../style.css">
+    <style>
+        ::-webkit-scrollbar {
+            width: 10px; 
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f100; 
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+            border: 2px solid #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        ::-webkit-scrollbar-corner {
+            background: #f1f1f1;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-y: scroll;
+        }
+
+        main {
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        /* Style for the Characters section */
+        .characters {
+            margin: 20px 0;
+            border-bottom: 2px solid #ddd; /* Adding a bottom border */
+            padding-bottom: 20px; /* Adding some space below the content */
+        }
+
+        .character {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .character h3 {
+            margin: 0;
+            color: #333;
+        }
+
+        .character p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .character img {
+            width: 150px;
+            height: auto;
+            float: left;
+            margin-right: 20px;
+            border-radius: 8px;
+        }
+
+        .wanted-system, .map-system, .video-container {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Grand Theft Auto: San Andreas Information</h1>
+        <h1>Grand Theft Auto: San Andreas Informatie</h1>
     </header>
     
     <main>
         <div class="video-container">
-            <video width="80%" controls>
-                <source src="video_file.mp4" type="video/mp4">
-                Your browser does not support the video tag.
+            <h2>San Andreas Gameplay</h2><br>
+            <video width="50%" autoplay muted>
+                <source src="videos/gameplay.mp4" type="video/mp4" >
             </video>
-        </div>
+        </div><br><br>
         
         <div class="wanted-system">
-            <h2>San Andreas Wanted System</h2>
-            <p>In Grand Theft Auto: San Andreas, the wanted system is a mechanic that allows the player to gain notoriety with the authorities. The system is represented by a series of stars, ranging from one to five.</p>
+            <h2>Wanted Systeem</h2>
+            <p>In San Andreas is het Wanted Systeem een mechanisme waarmee de speler bekendheid kan krijgen bij de autoriteiten. Het systeem wordt weergegeven door een reeks sterren, variërend van één tot vijf.</p>
             <ul>
-                <li><span class="star"></span> The player has committed a minor offense, and the police will attempt to arrest them.</li>
-                <li><span class="star"></span><span class="star"></span> The player has committed a more serious offense, and the police will send a patrol car to pursue them.</li>
-                <li><span class="star"></span><span class="star"></span><span class="star"></span> The player has committed a major offense, and the police will send a SWAT team to apprehend them.</li>
-                <li><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span> The player has committed a severe offense, and the police will deploy a helicopter to track them down.</li>
-                <li><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span> The player has committed a heinous crime, and the police will send a full-scale task force to capture them.</li>
+                <li><span class="star"></span> De speler heeft een lichte overtreding begaan, en de politie zal proberen hen te arresteren.</li>
+                <li><span class="star"></span><span class="star"></span> De speler heeft een ernstigere overtreding begaan, en de politie zal een patrouillewagen sturen om hen te achtervolgen.</li>
+                <li><span class="star"></span><span class="star"></span><span class="star"></span> De speler heeft een grote overtreding begaan, en de politie zal een SWAT-team sturen om hen te arresteren.</li>
+                <li><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span> De speler heeft een zware overtreding begaan, en de politie zal een helikopter inzetten om hen op te sporen.</li>
+                <li><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span> De speler heeft een vreselijke misdaad begaan, en de politie zal een grootschalige taskforce sturen om hen te vangen.</li>
             </ul><br>
         </div>
         
         <div class="map-system">
-            <h2>Map System</h2>
-            <p>The map system in Grand Theft Auto: San Andreas is a vital tool for navigating the game's vast open world. The map is divided into several regions, each with its own unique features and attractions.</p>
-            <img src="map_image.jpg" alt="Map of San Andreas">
-            <p>The map allows players to:</p>
+            <h2>Map systeem</h2>
+            <p>De map systeem in San Andreas is een essentieel hulpmiddel om door de enorme open wereld van het spel te navigeren. De kaart is verdeeld in verschillende regio's, elk met zijn eigen unieke kenmerken en attracties.</p>
+            <img src="images/san-andreas-map.png" width="25%" alt="Kaart van San Andreas">
+            <p>De kaart stelt spelers in staat om:</p>
             <ul>
-                <li>Explore the city and its surroundings</li>
-                <li>Find hidden locations and secrets</li>
-                <li>Track down mission objectives and side quests</li>
-                <li>Plan their route and navigate the game world</li>
+                <li>De stad en zijn omgeving te verkennen</li>
+                <li>Verborgen locaties en geheimen te vinden</li>
+                <li>Missiedoelen en zijmissies te volgen</li>
+                <li>Hun route te plannen en door de spelwereld te navigeren</li>
             </ul>
         </div>
+
+        <div class="characters">
+            <h2>Karakters</h2>
+
+            <div class="character">
+                <img src="images/CJ-GTASA.png" alt="Carl 'CJ' Johnson">
+                <h3>Carl 'CJ' Johnson</h3>
+                <p>Carl 'CJ' Johnson is de protagonist van Grand Theft Auto: San Andreas. Na de moord op zijn moeder keert CJ terug naar Los Santos om de controle over zijn familie en bende over te nemen. Gedurende het spel wordt hij de leider van de Grove Street Families en streeft hij ernaar orde te scheppen in zijn chaotische leven en buurt.</p>
+            </div>
+
+            <!-- Character 2: Big Smoke -->
+            <div class="character">
+                <img src="images/BigSmoke-GTASA.png" alt="Big Smoke">
+                <h3>Big Smoke</h3>
+                <p>Big Smoke is een van de belangrijkste leden van de Grove Street Families. Hij is CJ's broer, hoewel zijn loyaliteit tegenover de bende en CJ twijfelachtig is naarmate het verhaal vordert. Big Smoke staat bekend om zijn grote omvang, liefde voor fastfood en verraad van CJ later in het spel.</p>
+            </div>
+
+            <!-- Character 3: Ryder -->
+            <div class="character">
+                <img src="images/LanceWilson-GTASA.png" alt="Ryder">
+                <h3>Ryder</h3>
+                <p>Ryder is een ander belangrijk lid van de Grove Street Families. Hij is CJ's jeugdvriend, hoewel hun relatie gespannen raakt door zijn acties in het spel. Ryder staat bekend om zijn rebelse houding en zijn betrokkenheid bij verschillende criminele activiteiten doorheen het spel.</p>
+            </div>
+        </div>
     </main>
+
+    <script>
+        // Scroll naar de onderkant zodra de pagina is geladen
+        window.onload = function() {
+            window.scrollTo(0, document.body.scrollHeight);
+        };
+    </script>
 </body>
 </html>
