@@ -23,7 +23,7 @@ function playOverlayVideo() {
     // Play the new video for 2 seconds
     setTimeout(function() {
         // Navigate to the next page after the new video has played
-        window.location.href = '/websites/michael/pages/page2.html';
+        window.location.href = '/websites/michael/pages/mainpage.html';
     }, 2500); // 2000 milliseconds = 2 seconds
 }
 
