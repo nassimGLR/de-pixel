@@ -28,16 +28,15 @@ function playOverlayVideo() {
     // Allow navigation only after the overlay video ends
     newVideo.addEventListener('ended', function() {
         canNavigate = true; // Enable navigation after the overlay video ends
-        existingVideo.src = '/websites/michael/videos/secondtime.mp4'; // Change to your looping video source
-        existingVideo.loop = true;
-        existingVideo.play();
+        // Navigate to the next page after the overlay video ends
+        window.location.href = '/websites/michael/pages/mainpage.html';
     });
 }
 
 // Set up videos on page load
 const backgroundVideo = document.getElementById('background-video');
 backgroundVideo.src = '/websites/michael/videos/firsttime.mp4'; // Your initial video
-backgroundVideo.muted = true; // Mute for autoplay to work in most browsers
+backgroundVideo.muted = false; // Mute for autoplay to work in most browsers
 backgroundVideo.play().catch(error => {
     console.error('Error playing video:', error);
 });
@@ -55,25 +54,22 @@ setTimeout(() => {
     canPlayOverlay = true; // Enable overlay video play
 }, 5000); // Change to 300ms
 
+// Trigger overlay video or navigation on click
 document.addEventListener('click', function() {
-    setTimeout(() => {
-        if (canNavigate) {
-            // Immediately navigate to the next page after 500ms
-            window.location.href = '/websites/michael/pages/mainpage.html'; // Navigate to the next page
-        } else {
-            playOverlayVideo(); // Play overlay video if allowed, after 500ms
-        }
-    }, 500); // 500ms delay
+    if (canNavigate) {
+        // Immediately navigate to the next page
+        window.location.href = '/websites/michael/pages/mainpage.html';
+    } else {
+        playOverlayVideo(); // Play overlay video if allowed
+    }
 });
 
-
+// Trigger overlay video or navigation on keydown
 document.addEventListener('keydown', function() {
-    setTimeout(() => {
-        if (canNavigate) {
-            // Immediately navigate to the next page after 500ms
-            window.location.href = '/websites/michael/pages/mainpage.html'; // Navigate to the next page
-        } else {
-            playOverlayVideo(); // Play overlay video if allowed, after 500ms
-        }
-    }, 500); // 500ms delay
+    if (canNavigate) {
+        // Immediately navigate to the next page
+        window.location.href = '/websites/michael/pages/mainpage.html';
+    } else {
+        playOverlayVideo(); // Play overlay video if allowed
+    }
 });
