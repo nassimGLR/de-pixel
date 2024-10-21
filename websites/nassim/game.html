@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Andreas Auto Minigame</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #fff;
+            text-shadow: 2px 2px 5px #000;
+        }
+        #gameCanvas {
+            background-color: #000000; /* Road color */
+            border: 5px solid #ffffff;
+            display: block;
+            margin: 0 auto;
+        }
+        #score {
+            font-size: 24px;
+            margin: 20px 0;
+            color: #fff;
+            text-shadow: 1px 1px 2px #000;
+        }
+        #startButton {
+            font-family: 'Press Start 2P', cursive;
+            display: block;
+    margin: 20px auto;
+    padding: 15px 30px; 
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-size: 18px; 
+        }
+        #startButton:hover {
+            background-color: #ffffff;
+    color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>San Andreas Auto Minigame</h1><br>
+    <canvas id="gameCanvas" width="400" height="600"></canvas>
+    <div id="score">Score: 0</div>
+    <button id="startButton">Start Game</button>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreDisplay = document.getElementById('score');
+        const startButton = document.getElementById('startButton');
+
+        let score = 0;
+        let car = { x: 180, y: 500, width: 40, height: 70, speed: 250 };
+        let obstacles = [];
+        let lastTime = 0;
+        let obstacleSpeed = 100;
+        let isGameRunning = false;
+
+        const lanes = 6; // Number of lanes
+        const laneWidth = canvas.width / lanes;
+        const minOpenLanes = 1; // Minimum open lanes at any time
+        const maxOpenLanes = 2; // Maximum open lanes
+
+        function startGame() {
+            score = 0;
+            car.x = 180;
+            car.y = 500;
+            car.speed = 250;
+            obstacleSpeed = 100;
+            obstacles = [];
+            isGameRunning = true;
+            scoreDisplay.innerText = 'Score: ' + score;
+            lastTime = performance.now();
+            spawnObstacles();
+            requestAnimationFrame(gameLoop);
+        }
+
+        function spawnObstacles() {
+            if (isGameRunning) {
+                const laneIndices = [...Array(lanes).keys()]; // Array [0, 1, 2, ..., lanes-1]
+                const openLanes = getRandomOpenLanes(minOpenLanes, maxOpenLanes); // Randomize which lanes remain open
+
+                const blockedLanes = laneIndices.filter(lane => !openLanes.includes(lane));
+
+                // Scale the number of cars to spawn based on score, only starting at score 200
+                let carsToSpawn = 1
+                
+                carsToSpawn = Math.min(carsToSpawn, blockedLanes.length); // Limit to the number of blocked lanes
+
+                // Place cars in the blocked lanes without collision
+                let attempts = 0;
+                while (attempts < 10 && carsToSpawn > 0) {
+                    const lane = blockedLanes[Math.floor(Math.random() * blockedLanes.length)];
+                    const randomColor = getRandomColor();
+                    const newObstacle = {
+                        x: lane * laneWidth + (laneWidth - 40) / 2, // Center obstacle in lane
+                        y: -Math.random() * 200 - 70, // Spawn slightly above the canvas
+                        width: 40,
+                        height: 70,
+                        color: randomColor
+                    };
+
+                    // Check for collisions with existing obstacles
+                    if (!obstacles.some(obstacle => isColliding(newObstacle, obstacle))) {
+                        obstacles.push(newObstacle);
+                        carsToSpawn--;
+                    }
+                    attempts++;
+                }
+            }
+
+            // Control the spawn rate based on score
+            const spawnRate = Math.max(2000 - score * 10, 500); // Slower spawn rate at low scores, faster at higher scores
+            setTimeout(spawnObstacles, spawnRate);
+        }
+
+        function getRandomOpenLanes(minOpen, maxOpen) {
+            const numberOfOpenLanes = Math.floor(Math.random() * (maxOpen - minOpen + 1)) + minOpen;
+            let openLanes = [];
+
+            while (openLanes.length < numberOfOpenLanes) {
+                const lane = Math.floor(Math.random() * lanes); // Random lane
+                if (!openLanes.includes(lane)) {
+                    openLanes.push(lane); // Add to open lanes
+                }
+            }
+
+            return openLanes;
+        }
+
+        function gameLoop(timestamp) {
+            const deltaTime = (timestamp - lastTime) / 1000;
+            lastTime = timestamp;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawCar();
+            drawObstacles();
+            moveCar(deltaTime);
+            moveObstacles(deltaTime);
+            checkCollisions();
+
+            if (isGameRunning) {
+                requestAnimationFrame(gameLoop);
+            }
+        }
+
+        function drawCar() {
+    ctx.fillStyle = 'white';
+    ctx.fillRect(car.x, car.y, car.width, car.height);
+
+    // Draw headlights
+    const headlightWidth = 10; // Width of the headlights
+    const headlightHeight = 10; // Height of the headlights
+    const headlightOffset = 15; // Distance from the front of the car
+    const verticalOffset = 33; // Distance above the car to position headlights
+    const shiftLeft = 5; // Amount to shift headlights to the left
+
+    // Calculate positions for the headlights
+    const leftHeadlightX = car.x + (car.width / 2) - headlightOffset - shiftLeft; // Move left headlight
+    const rightHeadlightX = car.x + (car.width / 2) + headlightOffset - shiftLeft; // Move right headlight
+
+    // Position the headlights above the center of the car
+    const headlightY = car.y + (car.height / 2) - (headlightHeight / 2) - verticalOffset;
+
+    // Draw left headlight
+    ctx.fillStyle = 'black'; // Color for headlights
+    ctx.fillRect(leftHeadlightX, headlightY, headlightWidth, headlightHeight);
+    
+    // Draw right headlight
+    ctx.fillRect(rightHeadlightX, headlightY, headlightWidth, headlightHeight);
+}
+
+function drawObstacles() {
+    obstacles.forEach(obstacle => {
+        ctx.fillStyle = obstacle.color;
+        ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+
+        // Draw headlights for the obstacle car
+        const headlightWidth = 10; // Width of the headlights
+        const headlightHeight = 10; // Height of the headlights
+        const headlightOffset = 15; // Distance from the front of the car
+        const verticalOffset = -33; // Distance above the car to position headlights
+        const shiftLeft = 5; // Amount to shift headlights to the left
+
+        // Calculate positions for the headlights
+        const leftHeadlightX = obstacle.x + (obstacle.width / 2) - headlightOffset - shiftLeft; // Move left headlight
+        const rightHeadlightX = obstacle.x + (obstacle.width / 2) + headlightOffset - shiftLeft; // Move right headlight
+
+        // Position the headlights above the center of the obstacle car
+        const headlightY = obstacle.y + (obstacle.height / 2) - (headlightHeight / 2) - verticalOffset;
+
+        // Draw left headlight
+        ctx.fillStyle = 'black'; // Color for headlights
+        ctx.fillRect(leftHeadlightX, headlightY, headlightWidth, headlightHeight);
+        
+        // Draw right headlight
+        ctx.fillRect(rightHeadlightX, headlightY, headlightWidth, headlightHeight);
+    });
+}
+
+
+
+
+
+        function moveCar(deltaTime) {
+            if (car.movingLeft && car.x > 0) {
+                car.x -= car.speed * deltaTime;
+            }
+            if (car.movingRight && car.x < canvas.width - car.width) {
+                car.x += car.speed * deltaTime;
+            }
+            if (car.movingUp && car.y > 0) {
+                car.y -= car.speed * deltaTime;
+            }
+            if (car.movingDown && car.y < canvas.height - car.height) {
+                car.y += car.speed * deltaTime;
+            }
+        }
+
+        function moveObstacles(deltaTime) {
+            obstacleSpeed = 100 + score * .9; // Gradual speed increase
+            obstacles.forEach(obstacle => {
+                obstacle.y += obstacleSpeed * deltaTime;
+            });
+            obstacles = obstacles.filter(obstacle => obstacle.y < canvas.height);
+        }
+
+        function checkCollisions() {
+            if (obstacles.some(obstacle => isColliding(car, obstacle))) {
+                endGame();
+            }
+            score += 0.05;
+            scoreDisplay.innerText = 'Score: ' + Math.floor(score);
+        }
+
+        function isColliding(rect1, rect2) {
+            return !(rect1.x > rect2.x + rect2.width ||
+                     rect1.x + rect1.width < rect2.x ||
+                     rect1.y > rect2.y + rect2.height ||
+                     rect1.y + rect1.height < rect2.y);
+        }
+
+        function endGame() {
+            isGameRunning = false;
+            alert('Game Over! Your score: ' + Math.floor(score));
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (isGameRunning) {
+                switch(event.key) {
+                    case 'ArrowLeft':
+                    case 'a':
+                        car.movingLeft = true;
+                        break;
+                    case 'ArrowRight':
+                    case 'd':
+                        car.movingRight = true;
+                        break;
+                    case 'ArrowUp':
+                    case 'w':
+                        car.movingUp = true;
+                        break;
+                    case 'ArrowDown':
+                    case 's':
+                        car.movingDown = true;
+                        break;
+                }
+            }
+        });
+
+        document.addEventListener('keyup', (event) => {
+            if (isGameRunning) {
+                switch(event.key) {
+                    case 'ArrowLeft':
+                    case 'a':
+                        car.movingLeft = false;
+                        break;
+                    case 'ArrowRight':
+                    case 'd':
+                        car.movingRight = false;
+                        break;
+                    case 'ArrowUp':
+                    case 'w':
+                        car.movingUp = false;
+                        break;
+                    case 'ArrowDown':
+                    case 's':
+                        car.movingDown = false;
+                        break;
+                }
+            }
+        });
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        startButton.addEventListener('click', startGame);
+    </script>
+
+</body>
+</html>
