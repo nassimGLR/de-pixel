@@ -1,3 +1,4 @@
+/* General Styling */
 body, html {
   margin: 0;
   padding: 0;
@@ -5,108 +6,107 @@ body, html {
   font-family: Arial, sans-serif; /* Set a default font */
   overflow-y: auto; /* Enable vertical scrolling */
 }
-
+/* Black Box Logo */
+.logo {
+  height: 75px; /* Set the logo height to be smaller */
+  width: auto; /* Maintain aspect ratio */
+}
 .background-container {
-  position: relative; /* Set positioning context for children */
-  display: flex; /* Use flexbox for alignment */
-  flex-direction: column; /* Stack elements vertically */
-  padding-top: 80px; /* Add top padding to avoid overlap with fixed black box */
-  z-index: 0; /* Ensure it is under the boxes */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px; /* Avoid overlap with the black box */
 }
 
 .new-image {
-  position: absolute; /* Position it absolutely within the container */
-  top: 0; /* Align to the top */
-  left: 0; /* Align to the left */
-  width: 100%; /* Make the image responsive to fit the container */
-  height: 100%; /* Set height to fill the entire container */
-  object-fit: cover; /* Maintain aspect ratio and cover the space */
-  filter: blur(8px); /* Apply blur effect to the background image */
-  z-index: 1; /* Ensure it is below the content */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(8px); /* Apply blur effect to the background */
+  z-index: 1; /* Ensure it is behind all content */
 }
 
+/* Black Box */
 .black-box {
   width: 100%;
-  height: 60px; /* Box height */
-  background-color: black; /* Fully opaque black background */
+  height: 60px;
+  background-color: black;
   display: flex;
-  align-items: center; /* Vertically center content */
-  justify-content: space-between; /* Space between left and right content */
-  padding: 0 20px; /* Padding for the sides */
-  box-sizing: border-box; /* Ensure padding doesn't affect width */
-  z-index: 3; /* Ensure it is above the blurred background and the about image */
-  position: fixed; /* Make the black box fixed */
-  top: 0; /* Align it to the top of the viewport */
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 9999; /* Ensure it's always on top */
+  position: fixed;
+  top: 0;
 }
 
-.logo {
-  height: 75px; /* Set the logo height */
-  width: auto; /* Maintain aspect ratio */
-}
-
-.about-image {
-  display: block; /* Ensure the image is displayed */
-  margin: 20px auto; /* Center the image */
-  max-width: 80%; /* Set maximum width to 80% of its container */
-  height: auto; /* Maintain aspect ratio */
-  max-height: 325px; /* Set a maximum height to prevent overflow */
-  z-index: 2; /* Ensure it is above the background */
-  position: relative; /* Keep it in normal document flow */
-}
-
-/* White box styling */
+/* White Boxes */
 .game-description-box, .maker-description-box, .additional-info-box {
-  display: flex; /* Use flexbox for layout */
-  flex-direction: row; /* Align text and image side by side */
-  align-items: center; /* Center items vertically */
   width: 80%; /* Set width for the boxes */
-  background-color: white; /* Ensure the boxes are visible with a white background */
+  background-color: white; /* Set a white background for the boxes */
   color: black; /* Text color */
   margin: 20px auto; /* Center the boxes */
   padding: 20px; /* Padding for the content */
   border-radius: 8px; /* Rounded corners for aesthetics */
-  z-index: 3; /* Ensure the boxes are above the blurred background */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center items vertically */
+  z-index: 2; /* Keep it under the black box */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+/* Images inside White Boxes */
+.game-image, .maker-image, .additional-image {
+  max-width: 30%;
+  height: auto;
+  margin-left: 20px; /* Align images to the right side of the box */
 }
 
 .game-text, .maker-text, .additional-text {
   flex-grow: 1; /* Allow the text section to take remaining space */
-  text-align: left; /* Align text to the left */
 }
 
-.game-image, .maker-image, .additional-image {
-  max-width: 30%; /* Set maximum width for the images */
-  height: auto; /* Maintain aspect ratio */
-  object-fit: contain; /* Ensure the image fits within its box */
-  margin-left: 20px; /* Space between text and image */
+.about-image {
+  display: block;
+  margin: 20px auto;
+  max-width: 80%;
+  height: auto;
+  max-height: 325px;
+  z-index: 1;
+  position: relative;
 }
 
-nav.left-links {
-  display: flex; /* Ensures that links are aligned properly */
+/* Hyperlinks */
+nav.left-links, nav.right-link {
+  display: flex;
 }
 
 nav.left-links a, nav.right-link a {
-  color: white; /* Initial text color */
-  text-decoration: none; /* Remove underline */
-  margin-left: 20px; /* Space between links */
-  font-size: 16px; /* Font size */
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 16px;
 }
 
 nav.right-link {
-  margin-left: auto; /* Push the right link to the far right */
+  margin-left: auto;
 }
 
 nav a:hover {
   color: yellow; /* Change color on hover */
 }
 
+/* Footer */
 .footer-box {
-  width: 100%; /* Full width */
-  background-color: black; /* Black background */
-  color: white; /* Text color */
-  text-align: center; /* Center text */
-  padding: 10px 0; /* Padding for the box */
-  position: relative; /* Position it within the container */
-  bottom: 0; /* Align to the bottom */
-  z-index: 2; /* Ensure it is above the background */
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  z-index: 2;
 }
