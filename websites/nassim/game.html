@@ -64,7 +64,7 @@
         let car = { x: 180, y: 500, width: 40, height: 70, speed: 250 };
         let obstacles = [];
         let lastTime = 0;
-        let obstacleSpeed = 450;
+        let obstacleSpeed = 200;
         let isGameRunning = false;
 
         const lanes = 6; // Number of lanes
@@ -77,7 +77,7 @@
             car.x = 180;
             car.y = 500;
             car.speed = 250;
-            obstacleSpeed = 100;
+            obstacleSpeed = 200;
             obstacles = [];
             isGameRunning = true;
             scoreDisplay.innerText = 'Score: ' + score;
@@ -95,7 +95,6 @@
 
                 // Scale the number of cars to spawn based on score, only starting at score 200
                 let carsToSpawn = 1
-                
                 carsToSpawn = Math.min(carsToSpawn, blockedLanes.length); // Limit to the number of blocked lanes
 
                 // Place cars in the blocked lanes without collision
@@ -229,7 +228,7 @@ function drawObstacles() {
         }
 
         function moveObstacles(deltaTime) {
-            obstacleSpeed = 100 + score * .9; // Gradual speed increase
+            obstacleSpeed = 200 + score * .9; // Gradual speed increase
             obstacles.forEach(obstacle => {
                 obstacle.y += obstacleSpeed * deltaTime;
             });
