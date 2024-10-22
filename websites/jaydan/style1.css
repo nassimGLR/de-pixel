@@ -2,31 +2,42 @@
 body, html {
   margin: 0;
   padding: 0;
-  height: auto; /* Allow height to adjust based on content */
-  font-family: Arial, sans-serif; /* Set a default font */
-  overflow-y: auto; /* Enable vertical scrolling */
+  height: 100%;
+  font-family: Arial, sans-serif;
+  overflow-y: scroll;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
+
 /* Black Box Logo */
 .logo {
   height: 75px; /* Set the logo height to be smaller */
   width: auto; /* Maintain aspect ratio */
 }
+
+/* Background Container */
 .background-container {
   position: relative;
   display: flex;
   flex-direction: column;
+  min-height: 100vh; /* Ensure the container takes up the full viewport height */
   padding-top: 80px; /* Avoid overlap with the black box */
+  background-color: rgb(0, 0, 0);
 }
 
-.new-image {
+/* Blurred Background Image */
+.background-container::before {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: blur(8px); /* Apply blur effect to the background */
-  z-index: 1; /* Ensure it is behind all content */
+  right: 0;
+  bottom: 0;
+  background-image: url('images/background.png'); /* Set the background image */
+  background-color: #F2F2F2;
+  background-size: cover; /* Cover the area */
+  background-position: center; /* Center the background image */
+  filter: blur(8px); /* Apply blur */
+  z-index: 0; /* Ensure it's below all content */
 }
 
 /* Black Box */
@@ -44,51 +55,112 @@ body, html {
   top: 0;
 }
 
-/* White Boxes */
-.game-description-box, .maker-description-box, .additional-info-box {
-  width: 80%; /* Set width for the boxes */
-  background-color: white; /* Set a white background for the boxes */
-  color: black; /* Text color */
-  margin: 20px auto; /* Center the boxes */
-  padding: 20px; /* Padding for the content */
-  border-radius: 8px; /* Rounded corners for aesthetics */
-  display: flex; /* Use flexbox for layout */
-  align-items: center; /* Center items vertically */
-  z-index: 2; /* Keep it under the black box */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+/* Full Width Image Styling */
+.full-width-image {
+  position: absolute; /* Use absolute positioning */
+  top: 60px; /* Position it directly below the black box */
+  left: 0; /* Align to the left */
+  width: 100%; /* Full width */
+  height: 305px; /* Set height to cover the space (adjust as needed) */
+  object-fit: cover; /* Maintain aspect ratio */
+  z-index: 1; /* Ensure it stays above the triangle */
 }
 
-/* Images inside White Boxes */
+/* Triangle Styling */
+.triangle {
+  position: absolute; /* Use absolute positioning */
+  top: 368px; /* Keep the original triangle position */
+  left: 0; /* Align to the left */
+  width: 100%; /* Full width */
+  height: 36px; /* No height */
+  border-left: 100vw solid transparent; /* Left side */
+  border-right: 100vw solid transparent; /* Right side */
+  border-bottom: 75px solid transparent; /* Set bottom to transparent for the image */
+  background-image: url('images/diagonal.png'); /* Keep your existing image */
+  background-size: auto; /* Adjust to auto for tiling */
+  background-color: black;
+  clip-path: polygon(0 100%, 100% 100%, 50% 0); /* Create a triangle shape */
+  z-index: 1; /* Ensure it stays above the background */
+  transform: rotate(363deg);
+}
+
+/* Triangle Styling */
+.triangle1 {
+  position: absolute; /* Use absolute positioning */
+  top: 328px; /* Keep the original triangle position */
+  left: -750px; /* Adjust alignment */
+  width: 0; /* No width */
+  height: 0; /* No height */
+  border-left: 50vw solid transparent; /* Adjusted left side */
+  border-right: 50vw solid transparent; /* Adjusted right side */
+  border-bottom: 37.5px solid transparent; /* Set bottom to half the previous value */
+  background-image: url('images/diagonal.png'); /* Keep your existing image */
+  background-size: cover; /* Ensure it covers the area */
+  background-color: #000000; /* Background color */
+  clip-path: polygon(50% 100%, 100% 100%, 50% 0); /* Centered triangle shape */
+  z-index: 1; /* Ensure it stays above the background */
+  transform: rotate(360deg); /* Rotation */
+}
+
+/* White Boxes */
+.game-description-box, .maker-description-box, .additional-info-box {
+  width: 80%;
+  background-color: rgb(255, 255, 255,0.9);
+  color: black;
+  margin: 20px auto;
+  margin-top: -30px;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  z-index: 2; /* Ensure white boxes are above other elements */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .game-image, .maker-image, .additional-image {
   max-width: 30%;
   height: auto;
-  margin-left: 20px; /* Align images to the right side of the box */
+  margin-left: 20px;
 }
 
 .game-text, .maker-text, .additional-text {
-  flex-grow: 1; /* Allow the text section to take remaining space */
+  flex-grow: 1;
 }
 
+/* Image Above About Box */
 .about-image {
   display: block;
   margin: 20px auto;
+  margin-right: 50px;
   max-width: 80%;
   height: auto;
   max-height: 325px;
   z-index: 1;
+  margin-top: 135px;
   position: relative;
+  z-index: 2; /* Ensure it appears above other elements */
 }
 
 /* Hyperlinks */
-nav.left-links, nav.right-link {
-  display: flex;
+nav.left-links {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center items vertically */
 }
 
-nav.left-links a, nav.right-link a {
+nav.left-links a {
   color: white;
   text-decoration: none;
-  margin-left: 20px;
+  margin-right: 20px; /* Space between the links */
   font-size: 16px;
+  display: flex; /* Ensure links behave as flex items */
+  align-items: center; /* Center align text and GIF */
+}
+
+nav.left-links img.nav-gif {
+  width: 50px; /* Increased width of the GIF */
+  height: auto; /* Maintain aspect ratio */
+  vertical-align: middle; /* Align the GIF properly */
+  margin-left: 5px; /* Space between the hyperlink and GIF */
 }
 
 nav.right-link {
@@ -96,17 +168,70 @@ nav.right-link {
 }
 
 nav a:hover {
-  color: yellow; /* Change color on hover */
+  color: yellow;
 }
 
-/* Footer */
+/* Footer Styling */
 .footer-box {
-  width: 100%;
-  background-color: black;
-  color: white;
   text-align: center;
-  padding: 10px 0;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0); /* Fully transparent */
+  color: white;
   position: relative;
-  bottom: 0;
-  z-index: 2;
+  z-index: 9999; /* Ensure it's always on top */
+}
+
+/* Style for the gray box */
+.gray-box {
+  background-color: rgba(128, 128, 128, 0.5); /* Semi-transparent gray */
+  padding: 20px; /* Add some padding */
+  border-radius: 8px; /* Rounded corners */
+  margin: 20px auto; /* Centering and spacing */
+  width: 80%; /* Adjust width as needed */
+}
+.white-box-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.white-box {
+    width: 220px; /* Adjust width as needed */
+    background-color: white;
+    color: black;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.box-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.box-text {
+    margin-top: 10px;
+    text-align: center;
+}
+.home-title {
+  position: absolute; /* Use absolute positioning */
+  top: 85px; /* Adjust as needed */
+  left: 50%; /* Center it horizontally */
+  transform: translateX(-50%); /* Center it properly */
+  text-align: center;
+  color: black; /* Main text color */
+  font-size: 5em; /* Adjust font size as needed */
+  z-index: 2; /* Ensure it appears above other elements */
+  text-shadow: 
+      -1px -1px 0 white,  
+      1px -1px 0 white,
+      -1px 1px 0 white,
+      1px 1px 0 white; /* Create white outline */
 }
