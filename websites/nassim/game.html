@@ -82,7 +82,7 @@
             obstacleSpeed = 200;
             obstacles = [];
             isGameRunning = true;
-            obstacleSpeed.innerText = 'Snelheid: ' + speed;
+            obstacleSpeed.innerText = 'Snelheid: ' + obstacleSpeed;
             scoreDisplay.innerText = 'Score: ' + score;
             lastTime = performance.now();
             spawnObstacles();
@@ -243,7 +243,7 @@ function drawObstacles() {
                 endGame();
             }
             score += 0.05;
-            obstacleSpeed.innerText = 'Snelheid: ' + Math.floor(speed);
+            obstacleSpeed.innerText = 'Snelheid: ' + Math.floor(obstacleSpeed);
             scoreDisplay.innerText = 'Score: ' + Math.floor(score);
         }
 
