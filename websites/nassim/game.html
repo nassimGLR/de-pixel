@@ -52,12 +52,14 @@
     <h1>San Andreas Auto Minigame</h1><br>
     <canvas id="gameCanvas" width="400" height="600"></canvas>
     <div id="score">Score: 0</div>
+    <div id="speed">Snelheid: 0</div>
     <button id="startButton">START GAME</button>
     <a href="index.html" class="start-button">TERUG</a>
     <script>
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
         const scoreDisplay = document.getElementById('score');
+        const speedDisplay = document.getElementById('speed');
         const startButton = document.getElementById('startButton');
 
         let score = 0;
@@ -80,6 +82,7 @@
             obstacleSpeed = 200;
             obstacles = [];
             isGameRunning = true;
+            obstacleSpeed.innerText = 'Snelheid: ' + speed;
             scoreDisplay.innerText = 'Score: ' + score;
             lastTime = performance.now();
             spawnObstacles();
@@ -228,7 +231,7 @@ function drawObstacles() {
         }
 
         function moveObstacles(deltaTime) {
-            obstacleSpeed = 200 + score * .9; // Gradual speed increase
+            obstacleSpeed = 250 + score * .9; // Gradual speed increase
             obstacles.forEach(obstacle => {
                 obstacle.y += obstacleSpeed * deltaTime;
             });
@@ -240,6 +243,7 @@ function drawObstacles() {
                 endGame();
             }
             score += 0.05;
+            obstacleSpeed.innerText = 'Snelheid: ' + math.floor(speed);
             scoreDisplay.innerText = 'Score: ' + Math.floor(score);
         }
 
