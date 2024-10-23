@@ -27,6 +27,10 @@
             color: #fff;
             text-shadow: 1px 1px 2px #000;
         }
+        #speed {
+            color: #bfbfbf;
+            text-shadow: 1px 1px 2px #000;
+        }
         #startButton {
             font-family: 'Press Start 2P', cursive;
             display: block;
@@ -69,7 +73,7 @@
         let obstacleSpeed = 200;
         let isGameRunning = false;
         speedDisplay.innerText = 'Snelheid: ' + Math.floor(obstacleSpeed/3)+ 'km/h'
-        
+
         const lanes = 6; // Number of lanes
         const laneWidth = canvas.width / lanes;
         const minOpenLanes = 1; // Minimum open lanes at any time
