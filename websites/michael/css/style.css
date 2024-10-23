@@ -1,73 +1,170 @@
 body {
     margin: 0;
-    height: 100vh;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #000; /* Optional: Set a background color for the entire page */
-    overflow: hidden; /* Prevent scrollbars */
+    height: 100vh;
+    background-image: url('/websites/michael/images/background.jpg'); /* Add a related image */
+    background-size: cover;
+    background-position: center;
+    background-color: #2E3C3C;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('/websites/michael/images/background.jpg');
+    opacity: 0.95;
 }
 
-.container {
-    width: 1920px; /* Fixed width for 1920px */
-    height: 1080px; /* Fixed height for 1080px */
+.main-box {
+    width: 1920px; /* Set to 1920px width */
+    height: 1080px; /* Set to 1080px height */
+    background-color: rgba(0, 0, 0, 0.8); /* Transparent black to blend with background */
     position: relative;
-    overflow: hidden; /* Hide overflow */
+    padding: 10px;
+    box-shadow: 0px 0px 30px rgba(0, 255, 255, 0.5); /* Glowing box shadow */
+    border-radius: 15px; /* Rounded corners */
 }
 
-img {
-    width: 100%; /* Ensure the image fills the container's width */
-    height: 100%; /* Stretch image to height */
-    object-fit: fill; /* Maintain the image at the full container size */
-    aspect-ratio: 16/9; /* Force the image to stay in 16:9 aspect ratio */
-}
-
-/* Position the image button over the 'Press Start' text */
-.image-button {
+/* Logo box */
+.header {
     position: absolute;
-    top: calc(78% - 30px); /* Move the button to the desired position */
-    left: 50%; /* Center the button horizontally */
-    transform: translateX(-50%); /* Keep it centered horizontally */
-    width: 400px; /* Symmetrical width */
-    height: 75px; /* Symmetrical height for a rectangular shape */
-    text-decoration: none;
-    background-color: rgba(10, 15, 30, 0.1); /* Adjusted for higher transparency */
-    padding: 20px; /* Padding for better click area */
-    border-radius: 8px; /* Rounded corners */
-    border: 2px solid rgba(100, 150, 255, 0.5); /* Subtle blue border */
-    color: #A1F1FF; /* Light blue text */
+    top: 20px;
+    left: 50px;
+    width: 1820px;
+    height: 150px;
+    background-color: transparent;
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: center; /* Center the text inside the button */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
-    z-index: 10; /* Ensure the button is above other elements */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-.image-button:hover {
-    background-color: rgba(20, 30, 60, 0.7); /* Slightly lighter metallic effect on hover */
-    box-shadow: 0px 0px 15px rgba(150, 220, 255, 0.8); /* Stronger blue glow on hover */
-    border-color: rgba(150, 220, 255, 0.8); /* More prominent blue border on hover */
+.header img {
+    width: 706px;
+    height: 116px;
+    object-fit: contain;
 }
 
+/* Main area with video and right side */
+.main-content {
+    position: absolute;
+    top: 200px;
+    left: 50px;
+    display: flex;
+    justify-content: space-between;
+    width: 1820px;
+    height: 830px;
+}
+
+/* Video box */
+.video-box {
+    width: 1020px;
+    height: 830px;
+    background-color: #000000;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border: 2px solid #00FFFF; /* Neon border */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6); /* Neon glow */
+}
+.text-overlay {
+    position: absolute;
+    top: 70%;
+    left: -10px;
+    color: #A1F1FF;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    font-size: 18px;
+    text-align: left;
+    font-family: 'Bebas Neue';
+    text-shadow: 2px 2px 5px rgba(0, 255, 255, 0.6); /* Text glow */
+}
+
+.play-button {
+    font-size: 4em;
+    color: white;
+    position: absolute;
+    top: 35.4%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+/* Right content box */
+.right-content {
+    width: 780px;
+    height: 830px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Text box */
+.text-box {
+    width: 100%;
+    height: 400px;
+    background-color: #76FFFA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 2em;
+    font-weight: bold;
+    padding: 15px;
+    font-family: 'Bebas Neue', sans-serif;
+    border: 2px solid #00FFFF;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6); /* Neon glow effect */
+    text-shadow: 1px 1px 3px rgba(0, 255, 255, 0.5);
+}
+
+/* Bottom small boxes */
+.small-boxes {
+    display: flex;
+    justify-content: space-between;
+}
+
+.small-box {
+    width: 380px;
+    height: 400px;
+    background-color: #E6FEFB;
+    padding: 15px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5em;
+    color: black;
+    border: 2px solid #00FFFF; /* Cyan border */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.6); /* Neon glow */
+    text-shadow: 1px 1px 3px rgba(0, 255, 255, 0.5);
+    text-align: justify;
+}
+
+.small-box:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8); /* Stronger glow on hover */
+}
+
+/* "Terug" button */
 .terug-button {
     position: absolute;
     bottom: 20px;
-    left: 20px; /* Bottom-left corner */
+    left: 20px;
     text-decoration: none;
-    color: #A1F1FF; /* Light blue text to match the image highlights */
-    background-color: rgba(10, 15, 30, 0.8); /* Dark metallic blue background */
+    color: #A1F1FF;
+    background-color: rgba(10, 15, 30, 0.8);
     padding: 12px 20px;
-    border-radius: 8px; /* Rounded corners */
-    border: 2px solid rgba(100, 150, 255, 0.5); /* Subtle blue border */
-    font-size: 18px; /* Font size */
-    font-family: 'Arial', sans-serif; /* Clean font */
-    text-transform: uppercase; /* Make the text uppercase */
-    box-shadow: 0px 0px 10px rgba(100, 200, 255, 0.5); /* Soft blue glow around the button */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    border-radius: 8px;
+    border: 2px solid rgba(100, 150, 255, 0.5);
+    font-size: 18px;
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
+    box-shadow: 0px 0px 10px rgba(100, 200, 255, 0.5);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    z-index: 10;
 }
 
 .terug-button:hover {
-    background-color: rgba(20, 30, 60, 0.9); /* Slightly lighter metallic effect on hover */
-    box-shadow: 0px 0px 15px rgba(150, 220, 255, 0.8); /* Stronger blue glow on hover */
-    border-color: rgba(150, 220, 255, 0.8); /* More prominent blue border on hover */
+    background-color: rgba(20, 30, 60, 0.9);
+    transform: translateY(-5px); /* Moves up when hovered */
+    box-shadow: 0px 0px 15px rgba(150, 220, 255, 0.8);
+    border-color: rgba(150, 220, 255, 0.8);
 }
