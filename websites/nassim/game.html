@@ -72,7 +72,7 @@
         let lastTime = 0;
         let obstacleSpeed = 200;
         let isGameRunning = false;
-        speedDisplay.innerText = 'Snelheid: ' + Math.floor(obstacleSpeed/3)+ 'km/h'
+        speedDisplay.innerText = 'Snelheid: ' + Math.floor(obstacleSpeed/3)+ ' km/h'
 
         const lanes = 6; // Number of lanes
         const laneWidth = canvas.width / lanes;
@@ -87,7 +87,7 @@
             obstacleSpeed = 200;
             obstacles = [];
             isGameRunning = true;
-            speedDisplay.innerText = 'Snelheid: ' + Math.floor(obstacleSpeed/3)+ 'km/h'
+            speedDisplay.innerText = 'Snelheid: ' + Math.floor(obstacleSpeed/3)+ ' km/h'
             scoreDisplay.innerText = 'Score: ' + score;
             lastTime = performance.now();
             spawnObstacles();
@@ -248,7 +248,7 @@ function drawObstacles() {
                 endGame();
             }
             score += 0.05;
-            speedDisplay.innerText = 'Snelheid: ' + Math.floor(obstacleSpeed/3)+ 'km/h';
+            speedDisplay.innerText = 'Snelheid: ' + Math.floor(obstacleSpeed/3)+ ' km/h';
             scoreDisplay.innerText = 'Score: ' + Math.floor(score);
         }
 
