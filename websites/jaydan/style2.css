@@ -69,7 +69,7 @@ body, html {
 /* Triangle Styling */
 .triangle {
     position: absolute; /* Use absolute positioning */
-    top: 368px; /* Keep the original triangle position */
+    top: 382px; /* Keep the original triangle position */
     left: 0; /* Align to the left */
     width: 100%; /* Full width */
     height: 36px; /* No height */
@@ -79,13 +79,13 @@ body, html {
     background-image: url('images/diagonal.png'); /* Keep your existing image */
     background-size: auto; /* Adjust to auto for tiling */
     background-color: black;
-    clip-path: polygon(0 100%, 100% 100%, 50% 0); /* Create a triangle shape */
+    clip-path: polygon(-10% 100%, 100% 100%, 50% 0); /* Create a triangle shape */
     z-index: 1; /* Ensure it stays above the background */
     transform: rotate(363deg);
-}
-
-/* Triangle Styling */
-.triangle1 {
+  }
+  
+  /* Triangle Styling */
+  .triangle1 {
     position: absolute; /* Use absolute positioning */
     top: 328px; /* Keep the original triangle position */
     left: -750px; /* Adjust alignment */
@@ -96,11 +96,12 @@ body, html {
     border-bottom: 37.5px solid transparent; /* Set bottom to half the previous value */
     background-image: url('images/diagonal.png'); /* Keep your existing image */
     background-size: cover; /* Ensure it covers the area */
-    background-color: black; /* Background color */
-    clip-path: polygon(50% 100%, 100% 100%, 50% 0); /* Centered triangle shape */
+    background-color: #000000; /* Background color */
+    clip-path: polygon(-50% 100%, 100% 100%, 50% 0); /* Centered triangle shape */
     z-index: 1; /* Ensure it stays above the background */
     transform: rotate(360deg); /* Rotation */
-}
+  }
+  
 
 /* Image Above About Box */
 .about-image {
